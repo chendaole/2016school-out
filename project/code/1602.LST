@@ -1,0 +1,78 @@
+C51 COMPILER V9.01   1602                                                                  04/02/2016 22:42:43 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 1602
+OBJECT MODULE PLACED IN 1602.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 1602.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include"timer.h"
+   3          #define uchar unsigned char 
+   4          #define uint unsigned char
+   5          sbit lcden=P3^7;
+   6          sbit lcdrw=P3^6;
+   7          sbit lcdrs=P3^4;
+   8          
+   9          void write_com(uchar com)   //命令子函数command 
+  10          {
+  11   1              lcdrs=0;//接受指令
+  12   1              P1=com; //给P0口送指令码
+  13   1              delay(5);
+  14   1              lcden=1; //E变为高电平
+  15   1              delay(5);//在此延迟期间，将指令送入
+  16   1              lcden=0; //E变为低电平，高脉冲结束
+  17   1      }
+  18          
+  19          void write_data(uchar date)  //数据子函数data
+  20          {
+  21   1              lcdrs=1; //接受数据
+  22   1              P1=date; //给P0口送数据
+  23   1              delay(5);
+  24   1              lcden=1;  //E变为高电平
+  25   1              delay(5); //在此延迟期间，将数据送入
+  26   1              lcden=0; //E变为低电平，高脉冲结束
+  27   1      }
+  28          void init() //初始函数
+  29          {
+  30   1              lcdrw=0;
+  31   1              lcden=0; //E的初始值为低电平，后面的程序给高电平从而满足E为高脉冲
+  32   1              write_com(0x38); //写入显示模式指令
+  33   1              write_com(0x0e); //显示是否打开以及光标的设置
+  34   1              write_com(0x06); //地址指针的加减和整屏是否移动
+  35   1              write_com(0x01); //清屏指令
+  36   1              write_com(0x80+0x00); //显示字符的初始位置
+  37   1      
+  38   1      }
+  39          void write_lcd(uint offset,uchar tab[])
+  40          {
+  41   1              uint num;
+  42   1              write_com(0x80+offset); //显示字符的初始位置
+  43   1              for(num=0;num<16;num++)
+  44   1              {
+  45   2                      write_data(tab[num]);
+  46   2                      delay(20);
+  47   2              }
+  48   1      }
+  49          void disp_lcd(uint offset,uchar c)
+  50          {
+  51   1              write_com(0x80+offset); //显示字符的初始位置
+  52   1              write_data(c);//些数据
+  53   1      }
+
+
+C51 COMPILER V9.01   1602                                                                  04/02/2016 22:42:43 PAGE 2   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    141    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

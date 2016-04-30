@@ -1,0 +1,56 @@
+C51 COMPILER V9.01   ADMIN                                                                 12/07/2015 19:04:35 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ADMIN
+OBJECT MODULE PLACED IN admin.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE admin.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"admin.h"
+   2          #include"keyboard.h"
+   3          #include"1602.h"
+   4          extern unsigned char number[];
+   5          int admin = 8888;
+   6          int admin_key()
+   7          {
+   8   1              int iter;
+   9   1              int i;
+  10   1              int temp[4] = {0};
+  11   1              int key_temp;
+  12   1      
+  13   1               /* key_temp=key();
+  14   1                disp_lcd(0x00,number[key_temp]);
+  15   1                disp_lcd(0x01,number[admin]);
+  16   1                while(1);*/  //≤‚ ‘
+  17   1              for( iter = 0 ; iter < 4 ; iter++ )
+  18   1              {
+  19   2                      i = key();
+  20   2                      temp[iter] = i;
+  21   2                      disp_lcd(0x40+iter,number[i]);
+  22   2                              
+  23   2              }
+  24   1              key_temp = temp[0]*1000+temp[1]*100+temp[2]*10+temp[0];   
+  25   1              if(key_temp == admin)
+  26   1              {
+  27   2                      return 1;
+  28   2              }
+  29   1              else
+  30   1              {
+  31   2                      return 0;
+  32   2              }
+  33   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    155    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2      12
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

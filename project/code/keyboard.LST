@@ -1,0 +1,88 @@
+C51 COMPILER V9.01   KEYBOARD                                                              04/02/2016 22:42:52 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE KEYBOARD
+OBJECT MODULE PLACED IN keyboard.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE keyboard.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include  "reg52.h"
+   2          #include "SR04.h"
+   3          #include "timer.h"
+   4          
+   5          short int checkkey(void)
+   6          {       
+   7   1              unsigned char n;
+   8   1              P2=0xf0;
+   9   1              n=P2;
+  10   1              if(n!=0xf0)
+  11   1                      return 1;
+  12   1              else
+  13   1                      return 0;
+  14   1      }
+  15          int key()
+  16          {
+  17   1              int NO=0;
+  18   1              int sign=1;
+  19   1              unsigned char i,j;
+  20   1         while(sign)
+  21   1              {  
+  22   2                      if(sr04() == 1)//距离在6厘米内
+  23   2                      {
+  24   3                         T1 = 1;
+  25   3                        return 100; // 返回标志信号
+  26   3                      }else {
+  27   3                         T1 = 0;
+  28   3                      }
+  29   2                       
+  30   2                      if(checkkey()==1)
+  31   2                {     
+  32   3                       delay(1);
+  33   3                        if(checkkey()==1)
+  34   3                              P2=0xf0;
+  35   3                              i=P2;
+  36   3                              P2=0x0f;
+  37   3                              j=P2;
+  38   3                              i=i|j;
+  39   3                              switch(i)
+  40   3                              {   
+  41   4                                      case 0x7e:NO=0,sign=0;break;
+  42   4                                      case 0xbe:NO=1,sign=0;break;
+  43   4                                      case 0xde:NO=2,sign=0;break;
+  44   4                                      case 0xee:NO=3,sign=0;break;
+  45   4                                      case 0x7d:NO=4,sign=0;break;
+  46   4                                      case 0xbd:NO=5,sign=0;break;
+  47   4                                      case 0xdd:NO=6,sign=0;break;
+  48   4                                      case 0xed:NO=7,sign=0;break;
+  49   4                                      case 0x7b:NO=8,sign=0;break;
+  50   4                                      case 0xbb:NO=9,sign=0;break;
+  51   4                                      case 0xdb:NO=10,sign=0;break;
+  52   4                                      case 0xeb:NO=11,sign=0;break;
+  53   4                                      case 0x77:NO=12,sign=0;break;
+  54   4                                      case 0xb7:NO=13,sign=0;break;
+  55   4                                      case 0xd7:NO=14,sign=0;break;
+C51 COMPILER V9.01   KEYBOARD                                                              04/02/2016 22:42:52 PAGE 2   
+
+  56   4                                      case 0xe7:NO=15,sign=0;break;
+  57   4                      }
+  58   3                               while(checkkey()==1); //等待按键弹起
+  59   3              }
+  60   2              
+  61   2                      }
+  62   1              return NO;
+  63   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    312    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
