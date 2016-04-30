@@ -1,0 +1,75 @@
+C51 COMPILER V9.01   SAVE                                                                  12/07/2015 19:03:24 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SAVE
+OBJECT MODULE PLACED IN save.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE save.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "save.h"
+   2          #include "1602.h"
+   3          #include "keyboard.h"
+   4          #include "LED.h"
+   5          #define uchar unsigned char 
+   6          #define uint unsigned char
+   7          extern unsigned char number[10];
+   8          extern uint NO1,NO2;
+   9          extern unsigned int boxes[12];
+  10          int  save2()
+  11           {
+  12   1              uint temp;
+  13   1              uint iter;
+  14   1              uint clock_num[4];
+  15   1      
+  16   1              for(iter = 0 ; iter<12 ; iter++)
+  17   1              {
+  18   2                      if(boxes[iter] == 0)
+  19   2                      {
+  20   3                              clock_num[0] = NO1%10;
+  21   3                              clock_num[1] = NO1%9;
+  22   3                              clock_num[2] = NO2%10;
+  23   3                              clock_num[3] = NO2%9;
+  24   3      
+  25   3                              write_com(0x01);
+  26   3                              write_lcd(0x00,"key:");
+  27   3      
+  28   3                              temp =clock_num[0];
+  29   3                              disp_lcd(0x40,number[temp]);
+  30   3                              temp =clock_num[1];
+  31   3                              disp_lcd(0x41,number[temp]);
+  32   3                              temp =clock_num[2];
+  33   3                              disp_lcd(0x42,number[temp]);
+  34   3                              temp =clock_num[3];
+  35   3                              disp_lcd(0x43,number[temp]);
+  36   3      
+  37   3                              boxes[iter] = clock_num[0]*1000+clock_num[1]*100+clock_num[2]*10+clock_num[3];
+  38   3                              select_led(iter);
+  39   3                              goto L;
+  40   3                      }
+  41   2              }
+  42   1      
+  43   1      L:      while(1)
+  44   1              {
+  45   2                      if(key() == 12)
+  46   2                      {
+  47   3                      return 1;
+  48   3                      }       
+  49   2              }
+  50   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    227    ----
+   CONSTANT SIZE    =      5    ----
+C51 COMPILER V9.01   SAVE                                                                  12/07/2015 19:03:24 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

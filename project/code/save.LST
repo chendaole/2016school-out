@@ -1,0 +1,88 @@
+C51 COMPILER V9.01   SAVE                                                                  04/02/2016 22:42:44 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SAVE
+OBJECT MODULE PLACED IN save.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE save.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include "1602.h"
+   3          #include "keyboard.h"
+   4          #include "LED.h"
+   5          #include "SR04.h"
+   6          #define uchar unsigned char 
+   7          #define uint unsigned char
+   8          extern unsigned char number[10];
+   9          extern uint NO1,NO2;
+  10          extern unsigned int boxes[];
+  11          int  save2()
+  12           {
+  13   1              uint temp;
+  14   1              uint iter;
+  15   1              uint userkey_temp;
+  16   1              uint clock_num[4];
+  17   1              int i;
+  18   1      
+  19   1              for(iter = 0 ; iter<BNUM ; iter++)
+  20   1              {
+  21   2                      if(boxes[iter] == 0)
+  22   2                      {
+  23   3              restart:clock_num[0] = NO1%10;
+  24   3                              clock_num[1] = NO1%9;
+  25   3                              clock_num[2] = NO2%10;
+  26   3                              clock_num[3] = NO2%9;
+  27   3      
+  28   3                              write_com(0x01);
+  29   3                              write_lcd(0x00,"key:            ");
+  30   3      
+  31   3                              temp =clock_num[0];
+  32   3                              disp_lcd(0x40,number[temp]);
+  33   3                              temp =clock_num[1];
+  34   3                              disp_lcd(0x41,number[temp]);
+  35   3                              temp =clock_num[2];
+  36   3                              disp_lcd(0x42,number[temp]);
+  37   3                              temp =clock_num[3];
+  38   3                              disp_lcd(0x43,number[temp]);
+  39   3      
+  40   3                              userkey_temp = clock_num[0]*1000+clock_num[1]*100+clock_num[2]*10+clock_num[3];
+  41   3                              for(i = 0 ; i<BNUM ; i++)  //查询密码是否有相同的柜子
+  42   3                              {
+  43   4                                      if(boxes[i] == userkey_temp)
+  44   4                                      {
+  45   5                                              NO1 = TH0;
+  46   5                                              NO2 = TL0;
+  47   5                                              goto restart;
+  48   5                                      }
+  49   4                              }
+  50   3                              boxes[iter] = userkey_temp;
+  51   3                              select_led(iter);
+  52   3                              goto L;
+  53   3                      }
+  54   2              }
+  55   1      
+C51 COMPILER V9.01   SAVE                                                                  04/02/2016 22:42:44 PAGE 2   
+
+  56   1      L:      while(1)
+  57   1              {
+  58   2                      if(location()>80)         //返回
+  59   2                      {
+  60   3                      return 1;
+  61   3                      }       
+  62   2              }
+  63   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    252    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

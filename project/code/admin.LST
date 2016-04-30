@@ -1,0 +1,127 @@
+C51 COMPILER V9.01   ADMIN                                                                 04/02/2016 22:42:44 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ADMIN
+OBJECT MODULE PLACED IN admin.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE admin.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"keyboard.h"
+   2          #include"1602.h"
+   3          #include"LED.h"
+   4          extern unsigned char number[];
+   5          extern unsigned int boxes[];
+   6          extern int admin;
+   7          int admin_key() //管理员密码校验程序
+   8          {
+   9   1              int iter;
+  10   1              int i;
+  11   1              int temp[4];
+  12   1              int key_temp;
+  13   1      
+  14   1               /* key_temp=key();
+  15   1                disp_lcd(0x00,number[key_temp]);
+  16   1                disp_lcd(0x01,number[admin]);
+  17   1                while(1);*/  //测试
+  18   1       lp3:write_lcd(0x40,"                 ");
+  19   1              for( iter = 0 ; iter < 4 ; iter++ )
+  20   1              {
+  21   2                      i = key();
+  22   2                      if(i == 12)
+  23   2                      {
+  24   3                              return 0;
+  25   3                      } else if(i > 9)
+  26   2                      {
+  27   3                              goto lp3;
+  28   3                      }
+  29   2                      temp[iter] = i;
+  30   2                      disp_lcd(0x40+iter,number[i]);
+  31   2                              
+  32   2              }
+  33   1              key_temp = temp[0]*1000+temp[1]*100+temp[2]*10+temp[0];   
+  34   1              if(key_temp == admin)
+  35   1              {
+  36   2                      return 1;
+  37   2              }
+  38   1              else
+  39   1              {
+  40   2                      return 0;
+  41   2              }
+  42   1      }
+  43          void admin_control()//管理员控制
+  44          {       int num,x,i;
+  45   1      lp2:
+  46   1              num = 0;
+  47   1              write_lcd(0x00,"please input num");
+  48   1              for(i=0 ; i<2 ; i++)
+  49   1              {
+  50   2                 x = key();
+  51   2                 if(x > 9)
+  52   2                 {
+  53   3                       goto lp2;
+  54   3                 }
+  55   2                 if(x== 12)
+C51 COMPILER V9.01   ADMIN                                                                 04/02/2016 22:42:44 PAGE 2   
+
+  56   2                 {
+  57   3                      goto end;
+  58   3                 }
+  59   2                 disp_lcd(0x40+i,number[x]);
+  60   2                 if(i == 0)
+  61   2                 {
+  62   3                 num += x*10;
+  63   3                 }
+  64   2                 else
+  65   2                 {
+  66   3                      num += x;
+  67   3                 }
+  68   2                 if(num>12)
+  69   2                 {
+  70   3                      write_lcd(0x40,"               ");
+  71   3                      num =0;
+  72   3                      i = -1;
+  73   3                 }
+  74   2              }
+  75   1              open_led(num);
+  76   1              boxes[num]=0;
+  77   1      end: write_com(0x01);
+  78   1      }
+  79          void admin_resetkey()//管理员密码重置
+  80          {
+  81   1              int iter;
+  82   1              int i;
+  83   1              int temp[4];
+  84   1              write_lcd(0x00,"reset_adminkey:  ");
+  85   1       lp3:write_lcd(0x40,"                 ");
+  86   1              for( iter = 0 ; iter < 4 ; iter++ )
+  87   1              {
+  88   2                      i = key();
+  89   2                      if(i > 9)
+  90   2                      {
+  91   3                              goto lp3;
+  92   3                      }else if(i == 12)
+  93   2                      {
+  94   3                              goto over;
+  95   3                      }
+  96   2                      temp[iter] = i;
+  97   2                      disp_lcd(0x40+iter,number[i]);
+  98   2                              
+  99   2              }
+ 100   1              admin = temp[0]*1000+temp[1]*100+temp[2]*10+temp[0];
+ 101   1      over:;    
+ 102   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    532    ----
+   CONSTANT SIZE    =     69    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      30
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
