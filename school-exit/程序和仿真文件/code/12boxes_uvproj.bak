@@ -392,9 +392,9 @@
               <FilePath>.\admin.c</FilePath>
             </File>
             <File>
-              <FileName>DS18B20.c</FileName>
+              <FileName>SR04.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\DS18B20.c</FilePath>
+              <FilePath>.\SR04.c</FilePath>
             </File>
           </Files>
         </Group>

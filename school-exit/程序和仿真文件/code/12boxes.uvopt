@@ -291,10 +291,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>110</ColumnNumber>
+      <ColumnNumber>42</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>73</TopLine>
-      <CurrentLine>95</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>5</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\admin.c</PathWithFileName>
       <FilenameWithoutPath>admin.c</FilenameWithoutPath>
@@ -316,7 +316,7 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\SAVE.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\SAVE.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>3</CurrentLine>
     <Constant>0</Constant>
@@ -342,7 +342,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\TIMER.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\TIMER.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>4</CurrentLine>
     <Constant>0</Constant>
@@ -368,7 +368,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\1602.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\1602.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>9</CurrentLine>
     <Constant>0</Constant>
@@ -394,7 +394,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\SR04.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\SR04.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>3</CurrentLine>
     <Constant>0</Constant>
@@ -420,7 +420,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\KEYBOARD.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\KEYBOARD.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>5</CurrentLine>
     <Constant>0</Constant>
@@ -446,7 +446,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\ADMIN.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\ADMIN.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>5</CurrentLine>
     <Constant>0</Constant>
@@ -472,7 +472,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\TAKE.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\TAKE.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>3</CurrentLine>
     <Constant>0</Constant>
@@ -524,7 +524,7 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\Administrator\Desktop\毕设\code\LED.H</PathWithFilename>
+    <PathWithFilename>C:\Users\Administrator\Desktop\2016school-out\school-exit\程序和仿真文件\code\LED.H</PathWithFilename>
     <TopLine>1</TopLine>
     <CurrentLine>3</CurrentLine>
     <Constant>0</Constant>
@@ -1894,9 +1894,9 @@
       <Documents>
         <Doc>
           <Name>.\admin.c</Name>
-          <ColumnNumber>110</ColumnNumber>
-          <TopLine>73</TopLine>
-          <CurrentLine>95</CurrentLine>
+          <ColumnNumber>42</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>5</CurrentLine>
         </Doc>
         <Doc>
           <Name>LED.H</Name>

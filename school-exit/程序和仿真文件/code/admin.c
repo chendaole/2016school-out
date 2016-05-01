@@ -2,7 +2,7 @@
 #include"1602.h"
 #include"LED.h"
 extern unsigned char number[];
-extern unsigned int boxes[];
+extern unsigned int boxes[];//声明外部变量
 extern int admin;
 int admin_key()	//管理员密码校验程序
 {
