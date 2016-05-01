@@ -1890,8 +1890,14 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>12</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
+        <Doc>
+          <Name>.\admin.c</Name>
+          <ColumnNumber>110</ColumnNumber>
+          <TopLine>73</TopLine>
+          <CurrentLine>95</CurrentLine>
+        </Doc>
         <Doc>
           <Name>LED.H</Name>
           <ColumnNumber>14</ColumnNumber>
@@ -1963,12 +1969,6 @@
           <ColumnNumber>11</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\admin.c</Name>
-          <ColumnNumber>110</ColumnNumber>
-          <TopLine>73</TopLine>
-          <CurrentLine>95</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\take.c</Name>
