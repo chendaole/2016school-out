@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   TAKE                                                                  04/02/2016 22:42:44 PAGE 1   
+C51 COMPILER V9.01   TAKE                                                                  04/19/2016 20:03:17 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE TAKE
@@ -13,7 +13,7 @@ line level    source
    4          #include"timer.h"
    5          extern unsigned int boxes[12];
    6          extern unsigned char number[10];
-   7          extern lock;
+   7          extern int  lock;
    8          void take2()
    9          {
   10   1              int err=0;
@@ -62,7 +62,7 @@ line level    source
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    351    ----
-C51 COMPILER V9.01   TAKE                                                                  04/02/2016 22:42:44 PAGE 2   
+C51 COMPILER V9.01   TAKE                                                                  04/19/2016 20:03:17 PAGE 2   
 
    CONSTANT SIZE    =     33    ----
    XDATA SIZE       =   ----    ----

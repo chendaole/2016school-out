@@ -1,7 +1,7 @@
 #include"reg52.h"
 #include"timer.h"
 #include<intrins.h>
-bit cuowu;
+
 sbit trig=P3^2;
 sbit echo=P3^3;
 unsigned int s;
