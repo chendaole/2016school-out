@@ -4,7 +4,7 @@
 #include"timer.h"
 extern unsigned int boxes[12];
 extern unsigned char number[10];
-extern lock;
+extern int  lock;
 void take2()
 {
 	int err=0;

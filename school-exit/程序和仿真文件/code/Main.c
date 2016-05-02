@@ -69,7 +69,7 @@ st:	lock=0;
 	 	write_lcd(0x00,"    lock on!    ");
 		while(1)
 		{
-			if(key() == 13)
+			if(key() == 15)
 			{
 				write_lcd(0x00,"admin:          ");
 				if(admin_key() == 1)
